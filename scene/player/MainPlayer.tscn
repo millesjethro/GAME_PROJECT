@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://5kgnw1ntb6cb"]
+[gd_scene load_steps=20 format=3 uid="uid://5kgnw1ntb6cb"]
 
 [ext_resource type="Script" uid="uid://brvxnwr4m7ch5" path="res://scripts/player/PlayerScript.gd" id="1_gifrc"]
 [ext_resource type="Texture2D" uid="uid://d4ijcvb3qbod0" path="res://assets/player/Lancer.png" id="2_lcexw"]
+[ext_resource type="Script" uid="uid://nh0fhc5cbyp3" path="res://scripts/player/PlayerStatus.gd" id="3_lcexw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xq174"]
 atlas = ExtResource("2_lcexw")
@@ -135,3 +136,6 @@ shape = SubResource("CapsuleShape2D_pjx6l")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
 position_smoothing_speed = 8.0
+
+[node name="PlayerStatus" type="Node" parent="."]
+script = ExtResource("3_lcexw")
