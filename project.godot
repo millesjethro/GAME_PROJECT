@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="PushForward"
+run/main_scene="uid://kjxb6xee2wrt"
+config/features=PackedStringArray("4.4", "Mobile")
+
+[file_customization]
+
+folder_colors={
+"res://assets/levels/": "green",
+"res://assets/player/": "gray",
+"res://scene/levels/": "green",
+"res://scene/player/": "gray",
+"res://scripts/levels/": "green",
+"res://scripts/player/": "gray"
+}
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"

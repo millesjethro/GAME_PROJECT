@@ -1,0 +1,3 @@
+res://scene/player/MainPlayer.tscn
+res://scripts/player/PlayerScript.gd
+res://scene/levels/TestLevel/test_level.tscn
