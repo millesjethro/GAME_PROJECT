@@ -1,6 +1,4 @@
 extends Node
-class_name Player_On_Stage_Status
-
 # ---------------------
 # Finalized Stats
 # ---------------------
@@ -13,39 +11,26 @@ var CritChance: float = 0.0
 var Critical: float = 0.0
 
 # ---------------------
-# References
-# ---------------------
-@onready var PlayerSubStats: Player_Sub_Status = get_parent().get_node_or_null("SubStatus")
-@onready var PlayerHealthBar: PlayerHpBar = get_parent().get_node_or_null("CanvasLayer/PlayerHealthBar")
-# ---------------------
 # Setup
 # ---------------------
 func _ready():
-	if PlayerSubStats == null:
-		push_error("❌ SubStatus not found under MainPlayer!")
-	else:
-		_calc_stats()
+	pass
 # ---------------------
 # Recalculate Final Stats
 # ---------------------
-func _calc_stats() -> void:
-	if PlayerSubStats == null: return
-	
-	FinalAttack       = PlayerSubStats.calc_FinalAttack()
-	FinalDefense      = PlayerSubStats.calc_FinalDefense()
-	FinalHealthPoints = PlayerSubStats.calc_FinalHealthPoints()
-	CritChance        = PlayerSubStats.calc_Final_CriticalChance()
-	DodgeChance       = PlayerSubStats.calc_DodgeChance()
-	DamageReduction   = PlayerSubStats.calc_DamageReduction()
-	Critical          = PlayerSubStats.calc_Critical()
-	PlayerHealthBar.init_health(FinalHealthPoints)
+func _calc_stats(value: Dictionary) -> void:
+	FinalAttack       = value["FinalAttack"]
+	FinalDefense      = value["FinalDefense"]
+	FinalHealthPoints = value["FinalHealthPoints"]
+	CritChance        = value["CritChance"]
+	DodgeChance       = value["DodgeChance"]
+	DamageReduction   = value["DamageReduction"]
+	Critical          = value["Critical"]
 
 # ---------------------
 # Damage To Enemy
 # ---------------------
 func _calc_damage() -> int:
-	if PlayerSubStats == null: return 0
-	
 	var roll = randf()  # already returns [0, 1), no need for round()
 	if roll <= CritChance:
 		return int(FinalAttack * Critical)
@@ -55,8 +40,6 @@ func _calc_damage() -> int:
 # Incoming Damage
 # ---------------------
 func _take_damage(incoming_damage: int) -> int:
-	if PlayerSubStats == null: return FinalHealthPoints
-	
 	# Step 1: Dodge roll
 	if randf() <= DodgeChance:
 		return FinalHealthPoints  # no damage taken
@@ -69,5 +52,4 @@ func _take_damage(incoming_damage: int) -> int:
 	
 	# Step 4: Reduce HP
 	FinalHealthPoints = max(0, FinalHealthPoints - damage_taken)
-	PlayerHealthBar.init_health(FinalHealthPoints)
 	return FinalHealthPoints

@@ -10,7 +10,6 @@ var _target_hp: int
 # Initialize Bars
 # ---------------------
 func init_health(hp: int):
-	await ready  # ensures DamageBar exists
 	max_value = hp
 	value = hp
 	DamageBar.max_value = hp

@@ -1,12 +1,16 @@
 extends CharacterBody2D
 
 @onready var PlayerSprite = $LancerSprite
+@onready var PlayerHp = $CanvasLayer/PlayerHealthBar
+@onready var OnStageStats = $PlayerStatus/OnStageStatus
 
 @export var GravityForce: float = 600.0 # downward pull
 @export var MoveSpeed: float = 200.0   # movement speed
 
 func _ready() -> void:
 	PlayerSprite.play("idle")
+	print(OnStageStats.FinalHealthPoints)
+	PlayerHp.init_health(OnStageStats.FinalHealthPoints)
 
 func _physics_process(delta: float) -> void:
 	PlayerMovement(delta)

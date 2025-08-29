@@ -1,9 +1,9 @@
+Node
 CanvasLayer
 Label
 RichTextLabel
 Timer
 ProgressBar
-Node
 Camera2D
 TileMapLayer
 AnimatedSprite2D
