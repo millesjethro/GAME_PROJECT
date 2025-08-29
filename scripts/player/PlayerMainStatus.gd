@@ -1,5 +1,5 @@
 extends Node
-class_name  Player_Main_Status
+class_name Player_Main_Status
 
 #---------------------
 # Main Status
@@ -7,6 +7,11 @@ class_name  Player_Main_Status
 @export var Strength = 7
 @export var Agility = 6
 @export var Intelligence = 4
+
+var FinalStrength = 0
+var FinalAgility = 0
+var FinalIntelligence = 0
+
 #---------------------
 # Extra Main Status
 #---------------------
@@ -19,17 +24,20 @@ var PassiveAddAgility = 0
 var ItemAddIntelligence = 0
 var PassiveAddIntelligence = 0
 
-# ---------------------
-# Final Main Status Calculation
-# ---------------------
-func _calc_FinalStrength() -> int:
-	return Strength + ItemAddStrength + PassiveAddStrength
+#---------------------
+# Lifecycle
+#---------------------
+func _ready() -> void:
+	_load_status()
+	_recalc_final_stats()
 
-func _calc_FinalAgility() -> int:
-	return Agility + ItemAddAgility + PassiveAddAgility
-
-func _calc_FinalIntelligence() -> int:
-	return Intelligence + ItemAddIntelligence + PassiveAddIntelligence
+#---------------------
+# Recalculation
+#---------------------
+func _recalc_final_stats():
+	FinalStrength = Strength + ItemAddStrength + PassiveAddStrength
+	FinalAgility = Agility + ItemAddAgility + PassiveAddAgility
+	FinalIntelligence = Intelligence + ItemAddIntelligence + PassiveAddIntelligence
 
 # ---------------------
 # Main Status Upgrades
@@ -41,6 +49,8 @@ func _upgrade_Strength(byNumber: int):
 		Strength += 5
 	else:
 		Strength += 10
+	_recalc_final_stats()
+	_on_status_change()
 
 func _upgrade_Agility(byNumber: int):
 	if byNumber == 1:
@@ -49,6 +59,8 @@ func _upgrade_Agility(byNumber: int):
 		Agility += 5
 	else:
 		Agility += 10
+	_recalc_final_stats()
+	_on_status_change()
 
 func _upgrade_Intelligence(byNumber: int):
 	if byNumber == 1:
@@ -57,24 +69,12 @@ func _upgrade_Intelligence(byNumber: int):
 		Intelligence += 5
 	else:
 		Intelligence += 10
-
+	_recalc_final_stats()
+	_on_status_change()
 
 # ---------------------
-# Final Main Status Calculation
+# Save / Load
 # ---------------------
-func _calc_FinalMainStrength() -> int:
-	return Strength + ItemAddStrength + PassiveAddStrength
-
-func _calc_FinalMainAgility() -> int:
-	return Agility + ItemAddAgility + PassiveAddAgility
-
-func _calc_FinalMainIntelligence() -> int:
-	return Intelligence + ItemAddIntelligence + PassiveAddIntelligence
-	
-	
-func _ready() -> void:
-	_load_status()
-	
 func _on_status_change():
 	_save_status()
 
@@ -92,3 +92,4 @@ func _load_status():
 		Strength = config.get_value("MainStatus", "Strength", 0)
 		Agility = config.get_value("MainStatus", "Agility", 0)
 		Intelligence = config.get_value("MainStatus", "Intelligence", 0)
+		_recalc_final_stats()

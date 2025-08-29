@@ -21,6 +21,7 @@ folder_colors={
 "res://assets/player/": "gray",
 "res://scene/levels/": "green",
 "res://scene/player/": "gray",
+"res://scene/ui/player/": "gray",
 "res://scripts/levels/": "green",
 "res://scripts/player/": "gray"
 }

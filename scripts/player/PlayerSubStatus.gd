@@ -1,6 +1,7 @@
 extends Node
 class_name Player_Sub_Status
-@onready var MainStats: Player_Main_Status = $MainStats
+
+@onready var MainStats: Player_Main_Status = get_parent().get_node("MainStatus")
 
 # ---------------------
 # Base Values
@@ -35,56 +36,46 @@ var PassiveAddDR = 0.0
 
 var ItemAddCritical = 0.0
 var PassiveAddCritical = 0.0
-# ----------------------------
-# SnapShot Of Sub Status
-# ----------------------------
-func get_final_stats() -> Dictionary:
-	return {
-		"Attack": _calc_FinalAttack(),
-		"Defense": _calc_FinalDefense(),
-		"HealthPoints": _calc_FinalHealthPoints(),
-		"CritChance": _calc_Final_CriticalChance(),
-		"DodgeChance": _calc_DodgeChance(),
-		"DamageReduction": _calc_DamageReduction(),
-		"Critical": _calc_Critical()
-	}
+
+func _ready():
+	pass
 
 # ----------------------------
 # Final Sub Stats Calculation
 # ----------------------------
-func _calc_FinalAttack() -> int:
+func calc_FinalAttack() -> int:
 	return Attack \
-		+ int((MainStats.Agility + MainStats.Strength) * 0.75) \
+		+ int((MainStats.FinalAgility + MainStats.FinalStrength) * 0.75) \
 		+ ItemAddAttack \
 		+ PassiveAddAttack
 
-func _calc_FinalDefense() -> int:
+func calc_FinalDefense() -> int:
 	return Defense \
-		+ int((MainStats.Strength + (MainStats.Agility * 0.15)) * 1.3) \
+		+ int((MainStats.FinalStrength + (MainStats.FinalAgility * 0.15)) * 1.3) \
 		+ ItemAddDefense \
 		+ PassiveAddDefense
 
-func _calc_FinalHealthPoints() -> int:
+func calc_FinalHealthPoints() -> int:
 	return HealthPoints \
-		+ int(MainStats.Strength * 1.5) \
+		+ int(MainStats.FinalStrength * 1.5) \
 		+ ItemAddHealth \
 		+ PassiveAddHealth
 
-func _calc_Final_CriticalChance() -> float:
-	var BaseCritChance = CriticalChance + (MainStats.Agility / 300.0)
+func calc_Final_CriticalChance() -> float:
+	var BaseCritChance = CriticalChance + (MainStats.FinalAgility / 300.0)
 	var FinalCritChance = BaseCritChance + ItemAddCritChance + PassiveAddCritChance
 	return min(1.0, FinalCritChance)   # hard cap at 100%
 
-func _calc_DodgeChance() -> float:
-	var BaseDodge = (MainStats.Agility / 3.0) / 100.0   # scale with agility
+func calc_DodgeChance() -> float:
+	var BaseDodge = (MainStats.FinalAgility / 3.0) / 100.0   # scale with agility
 	var FinalDodge = Dodge + BaseDodge + ItemAddDodge + PassiveAddDodge
 	return min(0.7, FinalDodge)   # cap at 70%
 
-func _calc_DamageReduction() -> float:
+func calc_DamageReduction() -> float:
 	var FinalDR = DamageReduction + ItemAddDR + PassiveAddDR
 	return min(0.40, FinalDR)   # cap at 40%
 
-func _calc_Critical() -> float:
-	var BaseCritical = (MainStats.Agility / 4.0) / 100.0 
+func calc_Critical() -> float:
+	var BaseCritical = (MainStats.FinalAgility / 4.0) / 100.0 
 	var FinalCritical = Dodge + BaseCritical + ItemAddCritical + PassiveAddCritical
 	return FinalCritical

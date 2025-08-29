@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var PlayerSprite: AnimatedSprite2D = $LancerSprite
+@onready var PlayerSprite = $LancerSprite
 
 @export var GravityForce: float = 600.0 # downward pull
 @export var MoveSpeed: float = 200.0   # movement speed

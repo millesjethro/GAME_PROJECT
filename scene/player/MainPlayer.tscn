@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://5kgnw1ntb6cb"]
+[gd_scene load_steps=23 format=3 uid="uid://5kgnw1ntb6cb"]
 
 [ext_resource type="Script" uid="uid://brvxnwr4m7ch5" path="res://scripts/player/PlayerScript.gd" id="1_gifrc"]
 [ext_resource type="Texture2D" uid="uid://d4ijcvb3qbod0" path="res://assets/player/Lancer.png" id="2_lcexw"]
 [ext_resource type="Script" uid="uid://nh0fhc5cbyp3" path="res://scripts/player/PlayerMainStatus.gd" id="3_lcexw"]
 [ext_resource type="Script" uid="uid://c2lp62smkyo45" path="res://scripts/player/PlayerSubStatus.gd" id="4_xq174"]
 [ext_resource type="Script" uid="uid://4732g1masfj6" path="res://scripts/player/PlayerOnStageStatus.gd" id="5_ps0ga"]
+[ext_resource type="PackedScene" uid="uid://xxvsmf2f5kxl" path="res://scene/ui/player/PlayerHealthBar.tscn" id="6_xfkkd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xq174"]
 atlas = ExtResource("2_lcexw")
@@ -147,3 +148,11 @@ script = ExtResource("4_xq174")
 
 [node name="OnStageStatus" type="Node" parent="."]
 script = ExtResource("5_ps0ga")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource("6_xfkkd")]
+offset_left = 18.0
+offset_top = 15.0
+offset_right = 342.0
+offset_bottom = 41.0

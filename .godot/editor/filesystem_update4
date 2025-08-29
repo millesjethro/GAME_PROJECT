@@ -1,2 +1,10 @@
 res://scene/player/MainPlayer.tscn
 res://scripts/player/PlayerMainStatus.gd
+res://scripts/player/PlayerSubStatus.gd
+res://scripts/player/PlayerOnStageStatus.gd
+res://scene/ui/player/PlayerHealthBar.tscn
+res://scripts/ui/player/player_health_bar.gd
+res://scene/ui/player/BattleReady.tscn
+res://scene/levels/TestLevel/test_level.tscn
+res://scripts/player/PlayerScript.gd
+res://scripts/ui/player/battle_ready.gd
