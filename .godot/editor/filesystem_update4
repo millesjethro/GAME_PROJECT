@@ -1,3 +1,5 @@
 res://scene/player/MainPlayer.tscn
-res://scene/levels/TestLevel/test_level.tscn
-res://scripts/player/PlayerStatus.gd
+res://scripts/player/PlayerUpgrade.gd
+res://scripts/player/PlayerSubStatus.gd
+res://scripts/player/PlayerMainStatus.gd
+res://scripts/player/PlayerOnStageStatus.gd

@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://5kgnw1ntb6cb"]
+[gd_scene load_steps=22 format=3 uid="uid://5kgnw1ntb6cb"]
 
 [ext_resource type="Script" uid="uid://brvxnwr4m7ch5" path="res://scripts/player/PlayerScript.gd" id="1_gifrc"]
 [ext_resource type="Texture2D" uid="uid://d4ijcvb3qbod0" path="res://assets/player/Lancer.png" id="2_lcexw"]
-[ext_resource type="Script" uid="uid://nh0fhc5cbyp3" path="res://scripts/player/PlayerStatus.gd" id="3_lcexw"]
+[ext_resource type="Script" uid="uid://nh0fhc5cbyp3" path="res://scripts/player/PlayerMainStatus.gd" id="3_lcexw"]
+[ext_resource type="Script" uid="uid://c2lp62smkyo45" path="res://scripts/player/PlayerSubStatus.gd" id="4_xq174"]
+[ext_resource type="Script" uid="uid://4732g1masfj6" path="res://scripts/player/PlayerOnStageStatus.gd" id="5_ps0ga"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xq174"]
 atlas = ExtResource("2_lcexw")
@@ -137,5 +139,11 @@ shape = SubResource("CapsuleShape2D_pjx6l")
 zoom = Vector2(2.5, 2.5)
 position_smoothing_speed = 8.0
 
-[node name="PlayerStatus" type="Node" parent="."]
+[node name="MainStatus" type="Node" parent="."]
 script = ExtResource("3_lcexw")
+
+[node name="SubStatus" type="Node" parent="."]
+script = ExtResource("4_xq174")
+
+[node name="OnStageStatus" type="Node" parent="."]
+script = ExtResource("5_ps0ga")
