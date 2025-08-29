@@ -7,7 +7,71 @@ class_name  Player_Main_Status
 @export var Strength = 7
 @export var Agility = 6
 @export var Intelligence = 4
+#---------------------
+# Extra Main Status
+#---------------------
+var ItemAddStrength = 0
+var PassiveAddStrength = 0
 
+var ItemAddAgility = 0
+var PassiveAddAgility = 0
+
+var ItemAddIntelligence = 0
+var PassiveAddIntelligence = 0
+
+# ---------------------
+# Final Main Status Calculation
+# ---------------------
+func _calc_FinalStrength() -> int:
+	return Strength + ItemAddStrength + PassiveAddStrength
+
+func _calc_FinalAgility() -> int:
+	return Agility + ItemAddAgility + PassiveAddAgility
+
+func _calc_FinalIntelligence() -> int:
+	return Intelligence + ItemAddIntelligence + PassiveAddIntelligence
+
+# ---------------------
+# Main Status Upgrades
+# ---------------------
+func _upgrade_Strength(byNumber: int):
+	if byNumber == 1:
+		Strength += 1
+	elif byNumber == 5:
+		Strength += 5
+	else:
+		Strength += 10
+
+func _upgrade_Agility(byNumber: int):
+	if byNumber == 1:
+		Agility += 1
+	elif byNumber == 5:
+		Agility += 5
+	else:
+		Agility += 10
+
+func _upgrade_Intelligence(byNumber: int):
+	if byNumber == 1:
+		Intelligence += 1
+	elif byNumber == 5:
+		Intelligence += 5
+	else:
+		Intelligence += 10
+
+
+# ---------------------
+# Final Main Status Calculation
+# ---------------------
+func _calc_FinalMainStrength() -> int:
+	return Strength + ItemAddStrength + PassiveAddStrength
+
+func _calc_FinalMainAgility() -> int:
+	return Agility + ItemAddAgility + PassiveAddAgility
+
+func _calc_FinalMainIntelligence() -> int:
+	return Intelligence + ItemAddIntelligence + PassiveAddIntelligence
+	
+	
 func _ready() -> void:
 	_load_status()
 	

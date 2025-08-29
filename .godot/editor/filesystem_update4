@@ -1,5 +1,2 @@
 res://scene/player/MainPlayer.tscn
-res://scripts/player/PlayerUpgrade.gd
-res://scripts/player/PlayerSubStatus.gd
 res://scripts/player/PlayerMainStatus.gd
-res://scripts/player/PlayerOnStageStatus.gd
