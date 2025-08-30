@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc7hmj2y7ds3l"]
+
+[ext_resource type="Script" uid="uid://dcwepxf0jc5qs" path="res://scripts/enemy/OrcWarrior/OrcWarrior.gd" id="1_jc6j7"]
+[ext_resource type="Script" uid="uid://bs08trj468qvl" path="res://scripts/enemy/OrcWarrior/OrcWarriorMainStatus.gd" id="2_jfaip"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_214q1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws20c"]
+size = Vector2(22, 30)
+
+[node name="OrcWarrior" type="CharacterBody2D"]
+script = ExtResource("1_jc6j7")
+
+[node name="GroundCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_214q1")
+
+[node name="TakeDamage" type="Area2D" parent="." groups=["EnemyTakeDamage"]]
+
+[node name="TakeDamageCollision" type="CollisionShape2D" parent="TakeDamage"]
+shape = SubResource("RectangleShape2D_ws20c")
+debug_color = Color(0.992243, 0, 0.254731, 0.42)
+
+[node name="MainStatus" type="Node" parent="."]
+script = ExtResource("2_jfaip")

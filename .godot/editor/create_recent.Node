@@ -1,4 +1,7 @@
 Node
+CollisionShape2D
+Area2D
+CharacterBody2D
 CanvasLayer
 Label
 RichTextLabel
@@ -7,5 +10,3 @@ ProgressBar
 Camera2D
 TileMapLayer
 AnimatedSprite2D
-CollisionShape2D
-CharacterBody2D

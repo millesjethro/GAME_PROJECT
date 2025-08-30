@@ -19,9 +19,11 @@ config/features=PackedStringArray("4.4", "Mobile")
 folder_colors={
 "res://assets/levels/": "green",
 "res://assets/player/": "gray",
+"res://scene/enemy/": "red",
 "res://scene/levels/": "green",
 "res://scene/player/": "gray",
 "res://scene/ui/player/": "gray",
+"res://scripts/enemy/": "red",
 "res://scripts/levels/": "green",
 "res://scripts/player/": "gray"
 }

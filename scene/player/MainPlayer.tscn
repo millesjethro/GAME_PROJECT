@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://5kgnw1ntb6cb"]
+[gd_scene load_steps=25 format=3 uid="uid://5kgnw1ntb6cb"]
 
 [ext_resource type="Script" uid="uid://brvxnwr4m7ch5" path="res://scripts/player/PlayerScript.gd" id="1_gifrc"]
 [ext_resource type="Texture2D" uid="uid://d4ijcvb3qbod0" path="res://assets/player/Lancer.png" id="2_lcexw"]
@@ -119,9 +119,13 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_evkqd"]
+radius = 1.99999
+height = 27.9999
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjx6l"]
-radius = 6.0
-height = 18.0
+radius = 5.0
+height = 28.0
 
 [node name="MainPlayer" type="CharacterBody2D"]
 script = ExtResource("1_gifrc")
@@ -133,8 +137,16 @@ autoplay = "idle"
 frame = 4
 frame_progress = 0.739899
 
+[node name="DealDamage" type="Area2D" parent="."]
+
+[node name="DealDamageCollision" type="CollisionShape2D" parent="DealDamage"]
+position = Vector2(18, -5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_evkqd")
+debug_color = Color(0.912271, 4.71681e-06, 6.73831e-07, 0.419608)
+
 [node name="GroundCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_pjx6l")
 
 [node name="Camera2D" type="Camera2D" parent="."]

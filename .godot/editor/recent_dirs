@@ -1,3 +1,5 @@
+res://scripts/enemy/OrcWarrior
+res://scene/enemy/OrcWarrior
 res://scripts/player
 res://scripts/ui/player
 res://scene/levels/TestLevel
