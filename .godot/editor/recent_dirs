@@ -1,7 +1,8 @@
+res://scripts/player
+res://scripts/enemy
+res://assets/player
 res://assets/enemy/OrcWarrior
 res://scripts/enemy/OrcWarrior
 res://scene/enemy/OrcWarrior
-res://scripts/player
 res://scripts/ui/player
 res://scene/levels/TestLevel
-res://assets/player

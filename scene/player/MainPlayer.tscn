@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://5kgnw1ntb6cb"]
+[gd_scene load_steps=30 format=3 uid="uid://5kgnw1ntb6cb"]
 
 [ext_resource type="Script" uid="uid://brvxnwr4m7ch5" path="res://scripts/player/PlayerScript.gd" id="1_gifrc"]
 [ext_resource type="Texture2D" uid="uid://d4ijcvb3qbod0" path="res://assets/player/Lancer.png" id="2_lcexw"]
@@ -7,6 +7,23 @@
 [ext_resource type="Script" uid="uid://c2lp62smkyo45" path="res://scripts/player/PlayerSubStatus.gd" id="4_xq174"]
 [ext_resource type="Script" uid="uid://4732g1masfj6" path="res://scripts/player/PlayerOnStageStatus.gd" id="5_ps0ga"]
 [ext_resource type="PackedScene" uid="uid://xxvsmf2f5kxl" path="res://scene/ui/player/PlayerHealthBar.tscn" id="6_xfkkd"]
+[ext_resource type="Script" uid="uid://c46o5nicvuvxp" path="res://scripts/player/PlayerGold.gd" id="8_36hba"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oihod"]
+atlas = ExtResource("2_lcexw")
+region = Rect2(0, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjx6l"]
+atlas = ExtResource("2_lcexw")
+region = Rect2(100, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obd1f"]
+atlas = ExtResource("2_lcexw")
+region = Rect2(200, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa8ox"]
+atlas = ExtResource("2_lcexw")
+region = Rect2(300, 600, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xq174"]
 atlas = ExtResource("2_lcexw")
@@ -66,6 +83,23 @@ region = Rect2(700, 200, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oihod"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oihod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjx6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obd1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa8ox")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xq174")
@@ -132,12 +166,10 @@ script = ExtResource("1_gifrc")
 
 [node name="LancerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oihod")
-animation = &"walking"
+animation = &"hurt"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.739899
 
-[node name="DealDamage" type="Area2D" parent="."]
+[node name="DealDamage" type="Area2D" parent="." groups=["AreaDealDamage"]]
 
 [node name="DealDamageCollision" type="CollisionShape2D" parent="DealDamage"]
 position = Vector2(18, -5)
@@ -172,5 +204,8 @@ script = ExtResource("4_xq174")
 
 [node name="OnStageStatus" type="Node" parent="PlayerStatus"]
 script = ExtResource("5_ps0ga")
+
+[node name="PlayerGold" type="Node" parent="."]
+script = ExtResource("8_36hba")
 
 [connection signal="area_entered" from="DealDamage" to="." method="_on_deal_damage_area_entered"]

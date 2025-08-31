@@ -1,6 +1,12 @@
 extends CharacterBody2D
 
+@onready var mainStatus = $MainStatus
 @export var GravityForce = 200
+@onready var hpShow = $EnemyHealthBar
+
+func _ready() -> void:
+	hpShow.init_health(mainStatus.Health)
+	
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -8,3 +14,17 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = 0  # stay grounded when on floor
 	move_and_slide()
+
+func _on_take_damage_area_entered(area: Area2D) -> void:
+	if area.is_in_group("AreaDealDamage"):
+		var parent = area.get_parent()
+		if parent.has_node("PlayerStatus/OnStageStatus"):
+			var player_stats = parent.get_node("PlayerStatus/OnStageStatus")
+			var damage = player_stats.calc_damage()
+			print("Damage: ", damage)
+			var currentHp = mainStatus.take_damage(damage)
+			print("Current Hp: ", currentHp)
+			hpShow.set_health(currentHp)
+
+func _on_enemy_died(gold_amount: int) -> void:
+	pass

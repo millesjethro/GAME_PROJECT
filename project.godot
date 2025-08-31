@@ -23,10 +23,12 @@ folder_colors={
 "res://scene/enemy/": "red",
 "res://scene/levels/": "green",
 "res://scene/player/": "gray",
+"res://scene/ui/enemy/": "red",
 "res://scene/ui/player/": "gray",
 "res://scripts/enemy/": "red",
 "res://scripts/levels/": "green",
-"res://scripts/player/": "gray"
+"res://scripts/player/": "gray",
+"res://scripts/ui/enemy/": "red"
 }
 
 [rendering]

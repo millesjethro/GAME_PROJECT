@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cc7hmj2y7ds3l"]
+[gd_scene load_steps=18 format=3 uid="uid://cc7hmj2y7ds3l"]
 
 [ext_resource type="Script" uid="uid://dcwepxf0jc5qs" path="res://scripts/enemy/OrcWarrior/OrcWarrior.gd" id="1_jc6j7"]
 [ext_resource type="Script" uid="uid://bs08trj468qvl" path="res://scripts/enemy/OrcWarrior/OrcWarriorMainStatus.gd" id="2_jfaip"]
 [ext_resource type="Texture2D" uid="uid://d4do313kexwi8" path="res://assets/enemy/OrcWarrior/Armored Orc.png" id="2_njewi"]
+[ext_resource type="PackedScene" uid="uid://cd5mairk38ndl" path="res://scene/ui/enemy/EnemyHealthBar.tscn" id="4_njewi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_214q1"]
 radius = 7.0
@@ -115,3 +116,11 @@ debug_color = Color(0.992243, 0, 0.254731, 0.42)
 
 [node name="MainStatus" type="Node" parent="."]
 script = ExtResource("2_jfaip")
+
+[node name="EnemyHealthBar" parent="." instance=ExtResource("4_njewi")]
+offset_left = -20.0
+offset_top = 8.0
+offset_right = 20.0
+offset_bottom = 18.0
+
+[connection signal="area_entered" from="TakeDamage" to="." method="_on_take_damage_area_entered"]

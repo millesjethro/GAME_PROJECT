@@ -30,7 +30,7 @@ func _calc_stats(value: Dictionary) -> void:
 # ---------------------
 # Damage To Enemy
 # ---------------------
-func _calc_damage() -> int:
+func calc_damage() -> int:
 	var roll = randf()  # already returns [0, 1), no need for round()
 	if roll <= CritChance:
 		return int(FinalAttack * Critical)
