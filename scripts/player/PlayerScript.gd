@@ -3,7 +3,8 @@ extends CharacterBody2D
 @onready var PlayerSprite: AnimatedSprite2D = $LancerSprite
 @onready var PlayerHp = $CanvasLayer/PlayerHealthBar
 @onready var OnStageStats = $PlayerStatus/OnStageStatus
-
+@onready var GoldAmount = $PlayerGold
+@onready var GoldLabel = $CanvasLayer/PlayerShowGold
 @export var GravityForce: float = 600.0 # downward pull
 @export var MoveSpeed: float = 200.0   # movement speed
 
@@ -21,6 +22,7 @@ func _ready() -> void:
 	PlayerSprite.play("idle")
 	print(OnStageStats.FinalHealthPoints)
 	PlayerHp.init_health(OnStageStats.FinalHealthPoints)
+	GoldLabel.text = "GOLD: %d" % GoldAmount.gold_return()
 
 func _physics_process(delta: float) -> void:
 	# Always apply gravity
@@ -37,6 +39,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Normal movement only if not knocked back
 		PlayerMovement(delta)
+	
 	
 # --------------------------------
 # Player Movement Function
@@ -90,6 +93,7 @@ func _on_deal_damage_area_entered(area: Area2D) -> void:
 			var currentHp = OnStageStats._take_damage(enemy_attack)
 			PlayerHp.set_health(currentHp)
 			
+			GoldLabel.text = "GOLD: %d" % GoldAmount.gold_return()
 
 func apply_knockback(force: Vector2) -> void:
 	# If your player is a CharacterBody2D
