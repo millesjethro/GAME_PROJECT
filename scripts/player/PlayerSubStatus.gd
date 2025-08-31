@@ -11,7 +11,7 @@ var Intelligence: int
 # Base Values
 # ---------------------
 var Attack = 15
-var Defense = 6
+var Defense = 7
 var HealthPoints = 150
 var Dodge = 0.0
 var CriticalChance = 0.0  # 1% base

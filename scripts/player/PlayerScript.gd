@@ -43,3 +43,16 @@ func PlayerMovementSprite(Direction: int):
 		PlayerSprite.play("walking")
 	else:
 		PlayerSprite.play("idle")
+
+
+func _on_deal_damage_area_entered(area: Area2D) -> void:
+	if area.is_in_group("EnemyTakeDamage"):
+		var enemy = area.get_parent()   # Enemy node
+		if enemy.has_node("MainStatus"):
+			var enemy_stats = enemy.get_node("MainStatus")
+			var enemy_attack = enemy_stats.Attack
+			#print(enemy_attack)
+			var currentHp = OnStageStats._take_damage(enemy_attack)
+			#print(currentHp)
+			PlayerHp.set_health(currentHp)
+			

@@ -42,14 +42,12 @@ func _calc_damage() -> int:
 func _take_damage(incoming_damage: int) -> int:
 	# Step 1: Dodge roll
 	if randf() <= DodgeChance:
+		print("Dodge!")
 		return FinalHealthPoints  # no damage taken
-	
 	# Step 2: Apply Damage Reduction
 	var damage_taken = int(incoming_damage * (1.0 - DamageReduction))
-	
 	# Step 3: Apply Defense Reduction
 	damage_taken = max(0, damage_taken - int(FinalDefense * 0.75))
-	
 	# Step 4: Reduce HP
 	FinalHealthPoints = max(0, FinalHealthPoints - damage_taken)
 	return FinalHealthPoints

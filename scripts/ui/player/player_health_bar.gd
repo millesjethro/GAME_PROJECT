@@ -1,9 +1,9 @@
 extends ProgressBar
 class_name PlayerHpBar
 
-@onready var DamageBar: ProgressBar = $DamageBar
-@onready var DamageBarTimer: Timer = $DamageBarTimer
-@onready var HealthRemain: Label = $HealthRemain 
+@onready var DamageBar = $DamageBar
+@onready var DamageBarTimer = $DamageBarTimer
+@onready var HealthRemain = $HealthRemain 
 var _target_hp: int
 
 # ---------------------
@@ -27,11 +27,6 @@ func set_health(hp: int):
 # ---------------------
 # Tween after timer
 # ---------------------
-func on_damage_bar_timer_timeout() -> void:
-	if DamageBar == null:
-		return
-
+func _on_damage_bar_timer_timeout() -> void:
 	var tween := get_tree().create_tween()
-	tween.tween_property(DamageBar, "value", _target_hp, 0.5) \
-		.set_ease(Tween.EASE_OUT) \
-		.set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(DamageBar, "value", _target_hp, 0.5)

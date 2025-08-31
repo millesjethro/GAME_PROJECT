@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "Mobile")
 [file_customization]
 
 folder_colors={
+"res://assets/enemy/": "red",
 "res://assets/levels/": "green",
 "res://assets/player/": "gray",
 "res://scene/enemy/": "red",

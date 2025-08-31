@@ -172,3 +172,5 @@ script = ExtResource("4_xq174")
 
 [node name="OnStageStatus" type="Node" parent="PlayerStatus"]
 script = ExtResource("5_ps0ga")
+
+[connection signal="area_entered" from="DealDamage" to="." method="_on_deal_damage_area_entered"]

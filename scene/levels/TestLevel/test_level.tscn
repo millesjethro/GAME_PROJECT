@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://kjxb6xee2wrt"]
+[gd_scene load_steps=6 format=4 uid="uid://kjxb6xee2wrt"]
 
 [ext_resource type="Texture2D" uid="uid://cefmvcr2pgfoh" path="res://assets/levels/ground/free_grass_tileset.png" id="1_6b3l0"]
 [ext_resource type="PackedScene" uid="uid://5kgnw1ntb6cb" path="res://scene/player/MainPlayer.tscn" id="2_1v3bu"]
+[ext_resource type="PackedScene" uid="uid://cc7hmj2y7ds3l" path="res://scene/enemy/OrcWarrior/orc_warrior.tscn" id="3_btokv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1v3bu"]
 texture = ExtResource("1_6b3l0")
@@ -88,3 +89,6 @@ tile_set = SubResource("TileSet_btokv")
 
 [node name="MainPlayer" parent="." instance=ExtResource("2_1v3bu")]
 position = Vector2(23, -16)
+
+[node name="OrcWarrior" parent="." instance=ExtResource("3_btokv")]
+position = Vector2(165, -15)
