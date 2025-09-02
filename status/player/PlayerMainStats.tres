@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d3005mg15p3e2"]
+
+[ext_resource type="Script" uid="uid://rxjmtcba5kmt" path="res://status/MainStatus.gd" id="1_dsrsf"]
+
+[resource]
+script = ExtResource("1_dsrsf")
+str = 10
+agi = 5
+wis = 6

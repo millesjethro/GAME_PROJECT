@@ -8,7 +8,7 @@ var player: CharacterBody2D
 func _ready() -> void:
 	hpShow.init_health(mainStatus.Health)
 	mainStatus.died.connect(_on_enemy_died)
-	
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += GravityForce * delta

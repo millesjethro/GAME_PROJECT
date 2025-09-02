@@ -1,7 +1,5 @@
-res://scene/enemy/OrcWarrior/orc_warrior.tscn
-res://scripts/enemy/OrcWarrior/OrcWarrior.gd
 res://scene/player/MainPlayer.tscn
-res://scene/levels/TestLevel/test_level.tscn
-res://scene/ui/enemy/EnemyHealthBar.tscn
-res://scripts/player/PlayerGold.gd
+res://autoloads/MainStatus.gd
+res://status/player/PlayerMainStats.tres
+res://status/MainStatus.gd
 res://scripts/player/PlayerScript.gd

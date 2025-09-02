@@ -1,5 +1,6 @@
-Label
 Node
+ResourcePreloader
+Label
 Timer
 ProgressBar
 AnimatedSprite2D

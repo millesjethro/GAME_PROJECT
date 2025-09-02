@@ -28,7 +28,9 @@ folder_colors={
 "res://scripts/enemy/": "red",
 "res://scripts/levels/": "green",
 "res://scripts/player/": "gray",
-"res://scripts/ui/enemy/": "red"
+"res://scripts/ui/enemy/": "red",
+"res://status/enemy/": "red",
+"res://status/player/": "gray"
 }
 
 [rendering]
