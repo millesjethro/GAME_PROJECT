@@ -1,5 +1,0 @@
-res://scene/player/MainPlayer.tscn
-res://autoloads/MainStatus.gd
-res://status/player/PlayerMainStats.tres
-res://status/MainStatus.gd
-res://scripts/player/PlayerScript.gd

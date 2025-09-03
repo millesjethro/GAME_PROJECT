@@ -1,6 +1,6 @@
-res://status
 res://status/player
 res://scripts/player
+res://status
 res://scripts/enemy
 res://assets/player
 res://assets/enemy/OrcWarrior
