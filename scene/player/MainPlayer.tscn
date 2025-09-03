@@ -207,4 +207,6 @@ vertical_alignment = 1
 script = ExtResource("4_xq174")
 player_stats = ExtResource("5_ps0ga")
 
+[node name="Inventory" type="Node" parent="PlayerStats"]
+
 [connection signal="area_entered" from="DealDamage" to="." method="_on_deal_damage_area_entered"]

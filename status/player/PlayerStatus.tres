@@ -19,6 +19,7 @@ silver = 0
 bronze = 0
 Armor = {
 "Agility": 0,
+"DamageReduction": 0,
 "Defense": 0,
 "HealthPoints": 0,
 "Strength": 0,
@@ -27,6 +28,13 @@ Armor = {
 Weapon = {
 "Agility": 0,
 "Attack": 0,
+"Strength": 0,
+"Wisdom": 0
+}
+Accessories = {
+"Agility": 0,
+"Critical": 0,
+"DamageReduction": 0,
 "Strength": 0,
 "Wisdom": 0
 }

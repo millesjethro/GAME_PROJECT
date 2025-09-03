@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://drlcn2q1a6gih"]
+
+[node name="Inventory" type="ItemList"]
+anchors_preset = -1
+max_columns = 20
+fixed_column_width = 10

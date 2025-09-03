@@ -1,0 +1,5 @@
+res://scene/player/MainPlayer.tscn
+res://status/MainStatus.gd
+res://status/player/PlayerStatus.tres
+res://scripts/player/PlayerStatus.gd
+res://scene/ui/player/Inventory.tscn
