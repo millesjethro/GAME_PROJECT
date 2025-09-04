@@ -83,6 +83,8 @@ func _on_deal_damage_area_entered(area: Area2D) -> void:
 			velocity.x = dir * knockback_force
 			velocity.y = knockback_up
 			is_knockback = true
+			
+			
 
 func apply_knockback(force: Vector2) -> void:
 	# If your player is a CharacterBody2D

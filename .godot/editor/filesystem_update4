@@ -1,7 +1,6 @@
-res://scene/ui/player/Inventory.tscn
-res://scripts/items/items_status.gd
-res://scene/ui/enemy/EnemyHealthBar.tscn
-res://scripts/items/items_png.tres
-res://scripts/items/item_list/equipment/SilverArmor.tres
-res://scripts/items/item_list/consumables/HpPotion.tres
-res://scripts/items/item_list/materials/SilverBar.tres
+res://scene/ui/player/PlayerHealthBar.tscn
+res://scene/player/MainPlayer.tscn
+res://scene/levels/TestLevel/test_level.tscn
+res://scene/enemy/OrcWarrior/orc_warrior.tscn
+res://scripts/ui/player/player_health_bar.gd
+res://scripts/player/PlayerScript.gd

@@ -1,14 +1,14 @@
+Label
+AnimatedSprite2D
+TextureRect
 ItemList
 Node
 ResourcePreloader
-Label
 Timer
 ProgressBar
-AnimatedSprite2D
 CollisionShape2D
 Area2D
 CharacterBody2D
 CanvasLayer
 RichTextLabel
 Camera2D
-TileMapLayer

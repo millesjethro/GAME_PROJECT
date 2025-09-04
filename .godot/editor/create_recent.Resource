@@ -1,4 +1,4 @@
-ItemStats
 AtlasTexture
+ItemStats
 main_status
 Resource

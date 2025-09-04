@@ -1,84 +1,99 @@
-[gd_scene load_steps=6 format=3 uid="uid://xxvsmf2f5kxl"]
+[gd_scene load_steps=14 format=3 uid="uid://xxvsmf2f5kxl"]
 
-[ext_resource type="Script" uid="uid://cajd4bf35seta" path="res://scripts/ui/player/player_health_bar.gd" id="1_cj1oy"]
+[ext_resource type="Texture2D" uid="uid://cvsubyvwjs6im" path="res://assets/ui/my_own/heart_animated.png" id="1_cj1oy"]
+[ext_resource type="Script" uid="uid://cajd4bf35seta" path="res://scripts/ui/player/player_health_bar.gd" id="2_1fdgr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7ucx"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fdgr"]
+atlas = ExtResource("1_cj1oy")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cj1oy"]
-bg_color = Color(1, 0.287307, 0.225237, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkgvb"]
+atlas = ExtResource("1_cj1oy")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1fdgr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mylc"]
+atlas = ExtResource("1_cj1oy")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkgvb"]
-bg_color = Color(0.873298, 0.873298, 0.873298, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ajkb"]
+atlas = ExtResource("1_cj1oy")
+region = Rect2(96, 0, 32, 32)
 
-[node name="PlayerHealthBar" type="ProgressBar"]
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 350.0
-offset_bottom = 34.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_v7ucx")
-theme_override_styles/fill = SubResource("StyleBoxFlat_cj1oy")
-value = 50.0
-show_percentage = false
-script = ExtResource("1_cj1oy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yuym"]
+atlas = ExtResource("1_cj1oy")
+region = Rect2(128, 0, 32, 32)
 
-[node name="DamageBar" type="ProgressBar" parent="."]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_1fdgr")
-theme_override_styles/fill = SubResource("StyleBoxFlat_lkgvb")
-value = 60.0
-show_percentage = false
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e6am"]
+atlas = ExtResource("1_cj1oy")
+region = Rect2(160, 0, 32, 32)
 
-[node name="DamageBarTimer" type="Timer" parent="."]
-wait_time = 0.25
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ctxi"]
+atlas = ExtResource("1_cj1oy")
+region = Rect2(192, 0, 32, 32)
 
-[node name="HealthRemain" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 18
-text = "HEALTH:  1000/1000"
-horizontal_alignment = 1
-vertical_alignment = 1
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc53n"]
+atlas = ExtResource("1_cj1oy")
+region = Rect2(224, 0, 32, 32)
 
-[connection signal="timeout" from="DamageBarTimer" to="." method="_on_damage_bar_timer_timeout"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_powbx"]
+atlas = ExtResource("1_cj1oy")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myeak"]
+atlas = ExtResource("1_cj1oy")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h5uba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fdgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkgvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mylc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ajkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yuym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e6am")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ctxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc53n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_powbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myeak")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"heart_chips",
+"speed": 5.0
+}]
+
+[node name="health" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_h5uba")
+animation = &"heart_chips"
+frame = 5
+frame_progress = 0.279097
+script = ExtResource("2_1fdgr")
+
+[node name="health_left" type="Label" parent="."]
+offset_left = 24.0
+offset_top = -12.0
+offset_right = 64.0
+offset_bottom = 11.0
+text = "100%"

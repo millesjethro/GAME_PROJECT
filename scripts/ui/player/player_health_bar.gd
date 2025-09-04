@@ -1,32 +1,14 @@
-extends ProgressBar
-class_name PlayerHpBar
+extends AnimatedSprite2D
 
-@onready var DamageBar = $DamageBar
-@onready var DamageBarTimer = $DamageBarTimer
-@onready var HealthRemain = $HealthRemain 
-var _target_hp: int
+@onready var labelText = $health_left
+var max_hp: int = 0
+func _ready() -> void:
+	set_frame_and_progress(0,0)
 
-# ---------------------
-# Initialize Bars
-# ---------------------
-func init_health(hp: int):
-	max_value = hp
-	value = hp
-	DamageBar.max_value = hp
-	DamageBar.value = hp
-	HealthRemain.text = "HEALTH: %d/%d" % [value, max_value]
-# ---------------------
-# Update Health
-# ---------------------
-func set_health(hp: int):
-	value = hp
-	_target_hp = hp  # store target for DamageBar
-	DamageBarTimer.start() # wait before tweening
-	HealthRemain.text = "HEALTH: %d/%d" % [value, max_value]
+func init_hp(health: int):
+	max_hp = health
+	labelText.text = "100%"
 
-# ---------------------
-# Tween after timer
-# ---------------------
-func _on_damage_bar_timer_timeout() -> void:
-	var tween := get_tree().create_tween()
-	tween.tween_property(DamageBar, "value", _target_hp, 0.5)
+func set_hp(health: int):
+	var hp_left: int = (health/max_hp) * 100
+	labelText.text = [hp_left,"%"]
