@@ -1,6 +1,7 @@
-res://scene/ui/player/PlayerHealthBar.tscn
 res://scene/player/MainPlayer.tscn
+res://scripts/player/PlayerScript.gd
+res://scene/ui/player/PlayerHealthBar.tscn
+res://scripts/ui/player/player_health_bar.gd
 res://scene/levels/TestLevel/test_level.tscn
 res://scene/enemy/OrcWarrior/orc_warrior.tscn
-res://scripts/ui/player/player_health_bar.gd
-res://scripts/player/PlayerScript.gd
+res://scripts/player/PlayerStatus.gd

@@ -6,6 +6,8 @@ var FinalAttack = 0
 var FinalHealth = 0
 var FinalDefense = 0
 
+signal died
+
 func _ready() -> void:
 	player_stats.calc_final()
 	FinalAttack = player_stats.FinalAttack
@@ -20,6 +22,8 @@ func take_damage(incomingDamage: int) -> int:
 	incomingDamage -= (incomingDamage * player_stats.DamageReduction)
 	incomingDamage -= (FinalDefense* 0.75)
 	FinalHealth -= max(0, incomingDamage)
+	if FinalHealth <= 0:
+		emit_signal("died")
 	return FinalHealth
 	
 func deal_damage() -> int:

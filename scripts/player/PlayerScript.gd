@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var GoldLabel = $CanvasLayer/PlayerShowGold
 @export var GravityForce: float = 600.0 # downward pull
 @export var MoveSpeed: float = 200.0   # movement speed
-
+@onready var playerStats = $PlayerStats
 var is_knockback: bool = false
 
 # Physics values
@@ -15,11 +15,17 @@ var move_speed: float = 200.0
 # Knockback values
 var knockback_force: float = 150.0   # backward push
 var knockback_up: float = -200.0     # upward launch
+var is_dead: bool = false
 
 func _ready() -> void:
 	PlayerSprite.play("idle")
+	PlayerHp.init_hp(playerStats.FinalHealth)
+	playerStats.connect("died", Callable(self, "_on_player_stats_died"))
 
 func _physics_process(delta: float) -> void:
+	
+	if is_dead:
+		return  # stop all input and physics when dead
 	# Always apply gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -65,14 +71,17 @@ func PlayerMovementSprite(Direction: int):
 	else:
 		PlayerSprite.play("idle")
 
-
 func _on_deal_damage_area_entered(area: Area2D) -> void:
 	if area.is_in_group("EnemyTakeDamage"):
 		var enemy = area.get_parent()
 		if enemy.has_node("MainStatus"):
 			var enemy_stats = enemy.get_node("MainStatus")
 			var enemy_attack = enemy_stats.Attack
-
+			
+			var current_hp = playerStats.take_damage(enemy_attack)
+			PlayerHp.set_hp(current_hp)
+			
+			
 			# Play hurt animation
 			PlayerSprite.play("hurt")
 
@@ -94,3 +103,15 @@ func apply_knockback(force: Vector2) -> void:
 	knockback_timer.timeout.connect(func ():
 		velocity = Vector2.ZERO
 	)
+	
+	# -------------------------------
+	# ALL CALLBACKS
+	# -------------------------------
+
+func _on_player_stats_died() -> void:
+	if is_dead: 
+		return  # prevent running twice
+	is_dead = true
+	PlayerSprite.play("death")
+	await PlayerSprite.animation_finished
+	velocity = Vector2.ZERO

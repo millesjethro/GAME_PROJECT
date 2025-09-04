@@ -1,10 +1,26 @@
-[gd_scene load_steps=27 format=3 uid="uid://5kgnw1ntb6cb"]
+[gd_scene load_steps=31 format=3 uid="uid://5kgnw1ntb6cb"]
 
 [ext_resource type="Script" uid="uid://brvxnwr4m7ch5" path="res://scripts/player/PlayerScript.gd" id="1_gifrc"]
 [ext_resource type="Texture2D" uid="uid://d4ijcvb3qbod0" path="res://assets/player/Lancer.png" id="2_lcexw"]
 [ext_resource type="Script" uid="uid://dif2glpb3xo01" path="res://scripts/player/PlayerStatus.gd" id="4_xq174"]
 [ext_resource type="Resource" uid="uid://wx3b4l1wnrh3" path="res://status/player/PlayerStatus.tres" id="5_ps0ga"]
 [ext_resource type="PackedScene" uid="uid://xxvsmf2f5kxl" path="res://scene/ui/player/PlayerHealthBar.tscn" id="6_xfkkd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfo2a"]
+atlas = ExtResource("2_lcexw")
+region = Rect2(0, 700, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27cox"]
+atlas = ExtResource("2_lcexw")
+region = Rect2(100, 700, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80uhk"]
+atlas = ExtResource("2_lcexw")
+region = Rect2(200, 700, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjtc1"]
+atlas = ExtResource("2_lcexw")
+region = Rect2(300, 700, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oihod"]
 atlas = ExtResource("2_lcexw")
@@ -80,6 +96,23 @@ region = Rect2(700, 200, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oihod"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfo2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27cox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80uhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjtc1")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oihod")
@@ -163,8 +196,10 @@ script = ExtResource("1_gifrc")
 
 [node name="LancerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oihod")
-animation = &"hurt"
+animation = &"death"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="DealDamage" type="Area2D" parent="." groups=["AreaDealDamage"]]
 
@@ -205,3 +240,4 @@ script = ExtResource("4_xq174")
 player_stats = ExtResource("5_ps0ga")
 
 [connection signal="area_entered" from="DealDamage" to="." method="_on_deal_damage_area_entered"]
+[connection signal="died" from="PlayerStats" to="." method="_on_player_stats_died"]
