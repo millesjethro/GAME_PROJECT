@@ -3,12 +3,9 @@ extends AnimatedSprite2D
 @onready var labelText = $health_left
 var max_hp: int = 0
 
-func _ready() -> void:
-	set_frame_and_progress(0, 0) # start full
-
 func init_hp(health: int):
 	max_hp = health
-	set_hp(health) # show correct frame at start
+	set_frame_and_progress(0, 0) # start full
 
 func set_hp(health: int):
 	if max_hp <= 0:
@@ -19,7 +16,7 @@ func set_hp(health: int):
 
 	# Update label text
 	labelText.text = "%d%%" % int(hp_percent)
-
+	labelText.modulate = Color.RED
 	# Map percentage to frame (0 = 100%, 11 = 0%)
 	var frame_index: int = 11 - int(round(hp_percent / 10.0))
 	set_frame_and_progress(frame_index, 0)
@@ -34,3 +31,5 @@ func shake_icon():
 	tween.tween_property(self, "position", original_pos + Vector2(5, 0), 0.05).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self, "position", original_pos - Vector2(5, 0), 0.05).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self, "position", original_pos, 0.05).set_trans(Tween.TRANS_SINE)
+	await tween.finished
+	labelText.modulate = Color.WHITE

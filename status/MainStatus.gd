@@ -18,9 +18,11 @@ class_name main_status
 @export var DamageReduction = 0.0
 
 #Currency
-@export var gold = 0
-@export var silver = 0
-@export var bronze = 0
+@export var MoneyAmount: Dictionary = {
+	"bronze": 0,
+	"silver": 0,
+	"gold": 0
+}
 
 #Sub Status
 var FinalAttack = 0
@@ -79,23 +81,20 @@ func calc_others():
 	DamageReduction = Armor["DamageReduction"] + Accessories["DamageReduction"]
 	Critcal += (Accessories["Critical"]/100)
 
+func get_money() -> Dictionary:
+	return MoneyAmount
+
 # ----------------------
 # JSON SAVE & LOAD
 # ----------------------
 func to_dict() -> Dictionary:
-	return {
-		"gold": gold,
-		"silver": silver,
-		"bronze": bronze
-	}
+	return MoneyAmount
 
 func from_dict(data: Dictionary) -> void:
-	gold = data.get("gold", gold)
-	silver = data.get("silver", silver)
-	bronze = data.get("bronze", bronze)
+	MoneyAmount = data
 
 # Save to compressed package
-func save_to_package(file_path: String = "user://player_save.pkg") -> void:
+func save_to_package(file_path: String = "user://PlayerMoney.pkg") -> void:
 	var file = FileAccess.open(file_path, FileAccess.WRITE)
 	if file:
 		var data = to_dict()
@@ -107,7 +106,7 @@ func save_to_package(file_path: String = "user://player_save.pkg") -> void:
 		print("✅ Saved to package:", file_path)
 
 # Load from compressed package
-func load_from_package(file_path: String = "user://player_save.pkg") -> void:
+func load_from_package(file_path: String = "user://PlayerMoney.pkg") -> void:
 	if not FileAccess.file_exists(file_path):
 		push_error("⚠ No save file found at: " + file_path)
 		return

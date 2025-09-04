@@ -111,7 +111,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -222,16 +222,49 @@ position_smoothing_speed = 8.0
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource("6_xfkkd")]
 position = Vector2(44, 37)
 
-[node name="PlayerShowGold" type="Label" parent="CanvasLayer"]
+[node name="bronze" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -261.0
-offset_top = 40.0
-offset_right = -29.0
-offset_bottom = 63.0
+offset_left = -103.0
+offset_top = 48.0
+offset_right = -64.0
+offset_bottom = 71.0
 grow_horizontal = 0
-text = "GOLD: 10000"
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.635294, 0.286275, 0.0980392, 1)
+text = "1000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="silver" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_top = 48.0
+offset_right = -113.0
+offset_bottom = 71.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.641934, 0.641934, 0.641934, 1)
+text = "1000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="gold" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -254.0
+offset_top = 48.0
+offset_right = -163.0
+offset_bottom = 71.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.819608, 0.627451, 0.109804, 1)
+text = "1000"
 horizontal_alignment = 2
 vertical_alignment = 1
 

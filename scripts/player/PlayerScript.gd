@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 @onready var PlayerSprite: AnimatedSprite2D = $LancerSprite
 @onready var PlayerHp = $CanvasLayer/PlayerHealthBar
-@onready var GoldLabel = $CanvasLayer/PlayerShowGold
+@onready var GoldLabel = $CanvasLayer/gold
+@onready var SilverLabel = $CanvasLayer/silver
+@onready var BronzeLabel = $CanvasLayer/bronze
 @export var GravityForce: float = 600.0 # downward pull
 @export var MoveSpeed: float = 200.0   # movement speed
 @onready var playerStats = $PlayerStats
@@ -16,16 +18,26 @@ var move_speed: float = 200.0
 var knockback_force: float = 150.0   # backward push
 var knockback_up: float = -200.0     # upward launch
 var is_dead: bool = false
+var playOnce: int = 0
 
 func _ready() -> void:
 	PlayerSprite.play("idle")
 	PlayerHp.init_hp(playerStats.FinalHealth)
 	playerStats.connect("died", Callable(self, "_on_player_stats_died"))
+	BronzeLabel.text = "%d" % [playerStats.MoneyCurrent["bronze"]]
+	SilverLabel.text = "%d" % [playerStats.MoneyCurrent["silver"]]
+	GoldLabel.text = "%d" % [playerStats.MoneyCurrent["gold"]]
+	
 
 func _physics_process(delta: float) -> void:
-	
-	if is_dead:
-		return  # stop all input and physics when dead
+	if is_on_floor():
+		if is_dead:
+			if playOnce == 0:
+				PlayerSprite.play("death")
+				await PlayerSprite.animation_finished
+				playOnce += 1
+			velocity = Vector2.ZERO
+			return  # stop all input and physics when dead
 	# Always apply gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -104,14 +116,8 @@ func apply_knockback(force: Vector2) -> void:
 		velocity = Vector2.ZERO
 	)
 	
-	# -------------------------------
-	# ALL CALLBACKS
-	# -------------------------------
-
+# -------------------------------
+# ALL CALLBACKS
+# -------------------------------
 func _on_player_stats_died() -> void:
-	if is_dead: 
-		return  # prevent running twice
 	is_dead = true
-	PlayerSprite.play("death")
-	await PlayerSprite.animation_finished
-	velocity = Vector2.ZERO

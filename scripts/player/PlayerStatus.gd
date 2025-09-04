@@ -6,6 +6,12 @@ var FinalAttack = 0
 var FinalHealth = 0
 var FinalDefense = 0
 
+var MoneyCurrent: Dictionary = {
+	"bronze": 0,
+	"silver": 0,
+	"gold": 0
+}
+
 signal died
 
 func _ready() -> void:
@@ -13,6 +19,7 @@ func _ready() -> void:
 	FinalAttack = player_stats.FinalAttack
 	FinalHealth = player_stats.FinalHealthPoints
 	FinalDefense = player_stats.FinalDefense
+	MoneyCurrent = player_stats.get_money()
 
 func take_damage(incomingDamage: int) -> int:
 	var roll = round(randf_range(0.0, 1.0) * 100) / 100.0
@@ -29,7 +36,12 @@ func take_damage(incomingDamage: int) -> int:
 func deal_damage() -> int:
 	var roll = round(randf_range(0.0, 1.0) * 100) / 100.0
 	if player_stats.CriticalChance >= roll:
-		print("Critical")
 		FinalAttack = FinalAttack * player_stats.Critical
 		return FinalAttack
 	return FinalAttack
+
+func get_money_drop(amount: Dictionary):
+	MoneyCurrent["bronze"] += amount["bronze"]
+	MoneyCurrent["silver"] += amount["silver"]
+	MoneyCurrent["gold"] += amount["gold"]
+	

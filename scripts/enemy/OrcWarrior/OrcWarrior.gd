@@ -20,16 +20,14 @@ func _on_take_damage_area_entered(area: Area2D) -> void:
 	if area.is_in_group("AreaDealDamage"):
 		var parent = area.get_parent()
 		player = parent
-		if parent.has_node("PlayerStatus/OnStageStatus"):
-			var player_stats = parent.get_node("PlayerStatus/OnStageStatus")
-			var damage = player_stats.calc_damage()
-			print("Damage: ", damage)
+		if parent.has_node("PlayerStats"):
+			var player_stats = parent.get_node("PlayerStats")
+			var damage = player_stats.deal_damage()
 			var currentHp = mainStatus.take_damage(damage)
-			print("Current Hp: ", currentHp)
 			hpShow.set_health(currentHp)
 
-func _on_enemy_died(gold_amount: int) -> void:
-	if player.has_node("PlayerGold"):
+func _on_enemy_died(Amount: Dictionary) -> void:
+	if player.has_node("PlayerStats"):
 		print("gold added")
-		var gold = player.get_node("PlayerGold")
-		gold.add_gold(gold_amount)
+		var gold = player.get_node("PlayerStats")
+		gold.get_money_drop(Amount)
