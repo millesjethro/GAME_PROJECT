@@ -1,2 +1,4 @@
+ItemStats
+AtlasTexture
 main_status
 Resource

@@ -1,5 +1,7 @@
-res://scene/player/MainPlayer.tscn
-res://status/MainStatus.gd
-res://status/player/PlayerStatus.tres
-res://scripts/player/PlayerStatus.gd
 res://scene/ui/player/Inventory.tscn
+res://scripts/items/items_status.gd
+res://scene/ui/enemy/EnemyHealthBar.tscn
+res://scripts/items/items_png.tres
+res://scripts/items/item_list/equipment/SilverArmor.tres
+res://scripts/items/item_list/consumables/HpPotion.tres
+res://scripts/items/item_list/materials/SilverBar.tres

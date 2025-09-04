@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemStats" load_steps=4 format=3 uid="uid://cit4bwntf2edx"]
+
+[ext_resource type="Texture2D" uid="uid://c4t2kih8t38hs" path="res://assets/items/all-assets-preview.png" id="1_0857p"]
+[ext_resource type="Script" uid="uid://dqxt1nbep12kf" path="res://scripts/items/items_status.gd" id="1_vvk81"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooy2p"]
+atlas = ExtResource("1_0857p")
+region = Rect2(352, 208, 16, 16)
+
+[resource]
+script = ExtResource("1_vvk81")
+uid = "E-000002"
+Art = SubResource("AtlasTexture_ooy2p")
+name = "Silver Armor"
+description = "An armor made out of silver crafted with the honor of a great blacksmith."
+ItemType = "Equipment"
+isStackable = false
+metadata/_custom_type_script = "uid://dqxt1nbep12kf"

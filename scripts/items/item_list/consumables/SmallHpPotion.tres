@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemStats" load_steps=4 format=3 uid="uid://bgmmdnjikyx5t"]
+
+[ext_resource type="Script" uid="uid://dqxt1nbep12kf" path="res://scripts/items/items_status.gd" id="1_r8c54"]
+[ext_resource type="Texture2D" uid="uid://c4t2kih8t38hs" path="res://assets/items/all-assets-preview.png" id="1_va0uv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2ri5"]
+atlas = ExtResource("1_va0uv")
+region = Rect2(288, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_r8c54")
+uid = "C-000001"
+Art = SubResource("AtlasTexture_v2ri5")
+name = "Small Potion"
+description = "A small potion that is able to recover a small portion of your health."
+ItemType = "Consumable"
+isStackable = false
+metadata/_custom_type_script = "uid://dqxt1nbep12kf"
